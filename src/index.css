@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+section.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Service card animations */
+.service-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.service-card.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.service-card:nth-child(1) {
+  transition-delay: 0.1s;
+}
+.service-card:nth-child(2) {
+  transition-delay: 0.2s;
+}
+.service-card:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+/* Team section scroll animation */
+.team-card {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out,
+    border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+section.in-view .team-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+section.in-view .team-card:nth-child(1) {
+  transition-delay: 0.08s;
+}
+
+section.in-view .team-card:nth-child(2) {
+  transition-delay: 0.18s;
+}
+
+section.in-view .team-card:nth-child(3) {
+  transition-delay: 0.28s;
+}
+
+.team-avatar {
+  transform: scale(0.92);
+  transition: transform 0.7s ease-out;
+}
+
+section.in-view .team-avatar {
+  transform: scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .team-card,
+  .team-avatar {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Animated counter */
+.counter {
+  position: relative;
+  overflow: hidden;
+}
+
+.counter::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Floating animation */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Pulse animation for buttons */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(16, 185, 129, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.8),
+      0 0 30px rgba(16, 185, 129, 0.4);
+  }
+}
+
+.btn-pulse:hover {
+  animation: pulse-glow 2s infinite;
+}
+
+:root {
+  font-family: "Roboto", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
